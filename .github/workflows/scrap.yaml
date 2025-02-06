@@ -33,6 +33,16 @@ jobs:
         with:
           packages: |
            any::rsconnect
+           any::DT
+           any::DBI
+           any::R6
+           any::DColorBrewer
+           any::RSelenium
+           any::Rcpp
+           any::assertthat
+           any::backports
+           any::base64enc
+           any::binman
           
       - name: Run Python Script
         run: |
