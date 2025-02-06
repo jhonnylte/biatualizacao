@@ -7,6 +7,8 @@ on:
   - cron: '41 12 * * *'
     
   workflow_dispatch:
+env:
+  github_id: ${{secrets.GITHUB_TOKEN}}
 jobs:
   run-python:
     runs-on: windows-latest
