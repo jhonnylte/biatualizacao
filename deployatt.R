@@ -17,7 +17,7 @@ write.csv(df, file = "datahora.csv", row.names = FALSE)
 
 rsconnect::setAccountInfo(name='igest', token='9F778740FB114094DCF24FC14BE280CD', secret='myno+hWuTPBB/aW8gr9jPV1Tj+apj2NskDR2EM0L')
 
-rsconnect::deployApp(getwd())
+rsconnect::deployApp(getwd(),appName="app")
 
 
 
