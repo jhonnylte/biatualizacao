@@ -105,7 +105,9 @@ with open('dados.csv', mode='w', newline='', encoding='utf-8') as file:
     writer.writerow(["ACOMPANHAMENTO DAS CARGAS (Diário)",BIREMESSA,"https://app.powerbi.com/view?r=eyJrIjoiNGVhYWFkYTYtZGYzNC00ZThlLWIwMDUtODFhNzdhYmZjMGFhIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\Shiny\BI Remessa","OBS: Esse BI atualiza automaticamente pelo serviço web. Acesse o endereço de rede. Abra o arquivo 'BI Remessa.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar'"])
     writer.writerow(["PROCESSOS PENDENTES COM O PRAZO VENCIDO(Diário-1)",PENDENTESPRAZOVENCIDO,"https://app.powerbi.com/view?r=eyJrIjoiNjNkYzhlYWYtMGI3Yi00NjU5LTk2OWEtODE0MmMxZTQxYjljIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\BI Pendentes com o relator","OBS: Esse BI atualiza automaticamente pelo serviço web. Acesse o endereço de rede. Abra o arquivo 'pendentes com o relator.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar'"])
     writer.writerow(["RECURSOS DISTRIBUÍDOS NO 2º GRAU POR ASSUNTO (Mensal)",BIASSUNTOS,"https://app.powerbi.com/view?r=eyJrIjoiYjY3NTdhNmMtN2Q1ZS00YmQyLWJmZTUtYTIyYTQzYTAyNjYwIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\BI ASSUNTOS"," Acesse o endereço de rede. Abra o arquivo 'Painel de Assuntos.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar' "])
-
+    
+    file.close()
+    dados = pd.read_csv('dados.csv')
     # Fazendo upload para o GitHub dos arquivos resultantes da execução do código acima
     # Configurações gerais
     repo_owner = "jhonnylte"  # Nome do usuário ou organização
