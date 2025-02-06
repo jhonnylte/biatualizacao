@@ -33,6 +33,7 @@ jobs:
           python  -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org selenium
           python  -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org bs4
           python  -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas
+          python  -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org requests
           python att.py
 
           
