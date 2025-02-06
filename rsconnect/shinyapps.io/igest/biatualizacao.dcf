@@ -1,0 +1,10 @@
+name: biatualizacao
+title:
+username: igest
+account: igest
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13605570
+bundleId: 9752701
+url: https://igest.shinyapps.io/biatualizacao/
+version: 1
