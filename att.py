@@ -3,6 +3,7 @@ from time import sleep
 import csv
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
+import os
 #from selenium.webdriver.firefox.options import Options
 #options = Options()
 #options.headless = True 
