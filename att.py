@@ -4,6 +4,7 @@ import csv
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import os
+import pandas as pd
 #from selenium.webdriver.firefox.options import Options
 #options = Options()
 #options.headless = True 
