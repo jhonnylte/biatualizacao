@@ -104,5 +104,74 @@ with open('dados.csv', mode='w', newline='', encoding='utf-8') as file:
     writer.writerow(["ACOMPANHAMENTO DAS CARGAS (Diário)",BIREMESSA,"https://app.powerbi.com/view?r=eyJrIjoiNGVhYWFkYTYtZGYzNC00ZThlLWIwMDUtODFhNzdhYmZjMGFhIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\Shiny\BI Remessa","OBS: Esse BI atualiza automaticamente pelo serviço web. Acesse o endereço de rede. Abra o arquivo 'BI Remessa.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar'"])
     writer.writerow(["PROCESSOS PENDENTES COM O PRAZO VENCIDO(Diário-1)",PENDENTESPRAZOVENCIDO,"https://app.powerbi.com/view?r=eyJrIjoiNjNkYzhlYWYtMGI3Yi00NjU5LTk2OWEtODE0MmMxZTQxYjljIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\BI Pendentes com o relator","OBS: Esse BI atualiza automaticamente pelo serviço web. Acesse o endereço de rede. Abra o arquivo 'pendentes com o relator.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar'"])
     writer.writerow(["RECURSOS DISTRIBUÍDOS NO 2º GRAU POR ASSUNTO (Mensal)",BIASSUNTOS,"https://app.powerbi.com/view?r=eyJrIjoiYjY3NTdhNmMtN2Q1ZS00YmQyLWJmZTUtYTIyYTQzYTAyNjYwIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9","X:\SGE\GABINETE\BI ASSUNTOS"," Acesse o endereço de rede. Abra o arquivo 'Painel de Assuntos.pbix'.  Clique no Botão 'Atualizar'.  Clique no Botão 'Publicar' "])
+
+    # Fazendo upload para o GitHub dos arquivos resultantes da execução do código acima
+    # Configurações gerais
+    repo_owner = "jhonnylte"  # Nome do usuário ou organização
+    repo_name = "biatualizacao"  # Nome do repositório
+    branch = "master"
+    base_api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/"
+    #token = os.getenv('GITHUB_TOKEN')
+    token = os.environ["github_id"]
+    if token is None:
+        print("Token do GitHub não encontrado!")
+    else:
+        print("Token carregado com sucesso!")
+    
+    # Arquivos e conteúdos a serem atualizados
+    
+    arquivos = [
+        {
+            "file_path": "dados.csv",  # Caminho do arquivo no repositório
+            "content": dados.to_csv(index=False),  # Convertendo DataFrame para CSV
+            "commit_message": "Atualizando Dados.csv"
+        }   
+    ]
+    
+    # Função para atualizar um arquivo
+    def atualizar_arquivo(file_path, content, commit_message):
+        api_url = f"{base_api_url}{file_path}"
+        encoded_content = base64.b64encode(content.encode()).decode()
+    
+        # Obter SHA do arquivo existente
+        print(f"Buscando informações do arquivo: {file_path}")
+        response = requests.get(api_url, headers={"Authorization": f"token {token}"},verify=False)
+        if response.status_code == 200:
+            file_info = response.json()
+            sha = file_info.get('sha')
+            existing_content = base64.b64decode(file_info.get('content', '')).decode()
+            if content == existing_content:
+                print(f"O conteúdo de {file_path} é idêntico ao atual. Nenhuma atualização será feita.")
+                return
+        elif response.status_code == 404:
+            print(f"Arquivo {file_path} não encontrado no repositório. Ele será criado.")
+            sha = None
+        else:
+            print(f"Erro ao buscar o arquivo {file_path}: {response.status_code} - {response.json()}")
+            return
+    
+        # Dados do commit
+        data = {
+            "message": commit_message,
+            "content": encoded_content,
+            "branch": branch
+        }
+        if sha:
+            data["sha"] = sha
+    
+        # Fazer a requisição para criar/atualizar o arquivo
+        print(f"Realizando commit/push para {file_path}...")
+        commit_response = requests.put(api_url, json=data, headers={"Authorization": f"token {token}"},verify=False)
+        if commit_response.status_code in [200, 201]:
+            print(f"Commit/push realizado com sucesso para {file_path}!")
+        else:
+            print(f"Erro ao realizar o commit/push para {file_path}: {commit_response.status_code}")
+            print(commit_response.json())
+    
+    # Atualizar todos os arquivos na lista
+    for arquivo in arquivos:
+        atualizar_arquivo(arquivo["file_path"], arquivo["content"], arquivo["commit_message"])
 driver.quit()
+
+
 
