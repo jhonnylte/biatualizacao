@@ -18,32 +18,32 @@ from bs4 import BeautifulSoup
 driver = webdriver.Chrome()
 #IGEST
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiYjExZGVmZTgtNjU0NC00MDAwLWJkYzgtNThlYjQwYTJhMDNhIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 IGEST = soup.find('tspan').text
 #HALO
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiMmNlMTIzOWMtODJhNC00ZjYyLTlhMmEtMTJiN2RhMDZhYWVjIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(8)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 HALO = soup.find_all('g')[-2].text
 #HERMES
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiMmQ0NmE2ZjUtNjRkMi00ZjI3LWFlM2QtN2RhNGJmYTBjMjFlIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(8)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 HERMES = soup.find_all('g')[-2].text
 #AÇÕES
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiMmUzMDJiYTgtYjFjZS00ODVmLWIxMmUtNGFhMTc5MmIyNjAyIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 ACOES = soup.find_all('tspan')[-1].text
 #AÇÕES PJE
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiMmUzMDJiYTgtYjFjZS00ODVmLWIxMmUtNGFhMTc5MmIyNjAyIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 ACOESPJE = soup.find_all('tspan')[-1].text
 #TRT 7 EM NÚMEROS
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiNTZhZTIzY2QtMGY2My00NDZkLWE4MDUtMWI3Y2ViMTRiNzQ5IiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(8)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 TRT7 = soup.find_all('tspan')[-1].text
 #Relatório de desempenho IGEST
@@ -58,28 +58,28 @@ soup = BeautifulSoup(driver.page_source, 'html.parser')
 PENDESOL = soup.find_all('strong')[1].text
 #Aptos a Julgamento
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiYjliODY4ZWUtOTZkYy00MjE0LWI1N2MtYzEyYTJkODRkZTJiIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 APTOS = soup.find_all('text')[0].text
 #BITurmas
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiMWVmMTNhMzktYmQ3My00MTViLWIzODUtOTA5NjUzZTg4YWVhIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 element = soup.find_all('div', {'aria-valuetext': True})[-1]
 BITURMAS = element['aria-valuetext']
 #BIREMESSA
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiNGVhYWFkYTYtZGYzNC00ZThlLWIwMDUtODFhNzdhYmZjMGFhIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 BIREMESSA = soup.find_all('tspan')[-3].text
 #PendentesPrazoVencido
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiNjNkYzhlYWYtMGI3Yi00NjU5LTk2OWEtODE0MmMxZTQxYjljIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 PENDENTESPRAZOVENCIDO = soup.find_all('tspan')[1].text
 #BIAssuntos
 driver.get('https://app.powerbi.com/view?r=eyJrIjoiYjY3NTdhNmMtN2Q1ZS00YmQyLWJmZTUtYTIyYTQzYTAyNjYwIiwidCI6IjYxOGE5ZWVkLWYxM2MtNDU4Ny1iODgzLTAwNWZiY2Q4N2FlZCJ9')
-sleep(6)
+sleep(10)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 BIASSUNTOS = soup.find_all('tspan')[0].text
 
