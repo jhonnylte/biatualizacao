@@ -15,7 +15,7 @@ df <- data.frame(DataHora = data_hora_formatada)
 # Escrever o data frame em um arquivo CSV
 write.csv(df, file = "datahora.csv", row.names = FALSE)
 
-rsconnect::setAccountInfo(name='igest', token='4AD86E224272B46611C2CB41689B83EB', secret='9ebjFzh5rXdMGJzxldFzrw9tIq2uWC1OULvZMt23')
+rsconnect::setAccountInfo(name='igest', token='9F778740FB114094DCF24FC14BE280CD', secret='myno+hWuTPBB/aW8gr9jPV1Tj+apj2NskDR2EM0L')
 
 rsconnect::deployApp("app.R")
 
