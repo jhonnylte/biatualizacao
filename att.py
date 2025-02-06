@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import os
 import pandas as pd
 import base64
-
+import requests
 #from selenium.webdriver.firefox.options import Options
 #options = Options()
 #options.headless = True 
