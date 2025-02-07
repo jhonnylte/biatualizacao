@@ -32,7 +32,7 @@ jobs:
         
       - name: Install Packages R
         run: |
-          Rscript -e 'install.packages(c("pak", "rsconnect", "DT", "DBI", "R6", "RColorBrewer", "RSelenium", "Rcpp", "assertthat", "backports", "base64enc", "binman"), repos="https://cran.rstudio.com")'
+          Rscript -e "install.packages(c('pak', 'rsconnect', 'DT', 'DBI', 'R6', 'RColorBrewer', 'RSelenium', 'Rcpp', 'assertthat', 'backports', 'base64enc', 'binman'), repos='https://cran.rstudio.com')"
           
       - name: Run Python Script
         run: |
